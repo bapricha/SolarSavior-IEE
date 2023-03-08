@@ -1,13 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://71q8l8l8mplx"]
+[gd_scene load_steps=8 format=3 uid="uid://71q8l8l8mplx"]
 
 [ext_resource type="Texture2D" uid="uid://dey75530s1p0x" path="res://Sprites/beta-astronaut.png" id="1_6e48h"]
 [ext_resource type="Texture2D" uid="uid://b4drmxdeqgvvr" path="res://Other Images/Background/SolarSystemBackground.jpg" id="1_pu4e7"]
 [ext_resource type="Script" path="res://Scripts/CharacterThings.gd" id="3_pbli2"]
 [ext_resource type="Texture2D" uid="uid://d12k6nx5c8e06" path="res://Sprites/Asteroid-1.png" id="4_hos7n"]
+[ext_resource type="Texture2D" uid="uid://cpm2b3gtuo26i" path="res://Sprites/beta-star.png" id="5_oijc0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k8se6"]
-radius = 130.87
-height = 502.34
+radius = 109.247
+height = 428.705
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_leqo5"]
 
@@ -62,3 +63,25 @@ polygon = PackedVector2Array(13, 8, 60, -23, 118, -36, 233, -57, 400, -74, 588, 
 position = Vector2(1826, 2894)
 scale = Vector2(1.1, 1.1)
 zoom = Vector2(0.35, 0.35)
+
+[node name="StarPattern1" type="Node" parent="."]
+
+[node name="Star1" type="Sprite2D" parent="StarPattern1"]
+position = Vector2(2231, 2777)
+scale = Vector2(0.486328, 0.353516)
+texture = ExtResource("5_oijc0")
+
+[node name="Star2" type="Sprite2D" parent="StarPattern1"]
+position = Vector2(2477, 2400)
+scale = Vector2(0.486328, 0.353516)
+texture = ExtResource("5_oijc0")
+
+[node name="Star3" type="Sprite2D" parent="StarPattern1"]
+position = Vector2(2859, 2231)
+scale = Vector2(0.486328, 0.353516)
+texture = ExtResource("5_oijc0")
+
+[node name="Star4" type="Sprite2D" parent="StarPattern1"]
+position = Vector2(3206, 2354)
+scale = Vector2(0.486328, 0.353516)
+texture = ExtResource("5_oijc0")
