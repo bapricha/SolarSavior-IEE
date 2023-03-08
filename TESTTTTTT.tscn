@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://71q8l8l8mplx"]
+
+[ext_resource type="Texture2D" uid="uid://dey75530s1p0x" path="res://Sprites/beta-astronaut.png" id="1_6e48h"]
+[ext_resource type="Texture2D" uid="uid://b4drmxdeqgvvr" path="res://Other Images/Background/SolarSystemBackground.jpg" id="1_pu4e7"]
+[ext_resource type="Script" path="res://Scripts/CharacterThings.gd" id="3_pbli2"]
+[ext_resource type="Texture2D" uid="uid://d12k6nx5c8e06" path="res://Sprites/Asteroid-1.png" id="4_hos7n"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k8se6"]
+radius = 130.87
+height = 502.34
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_leqo5"]
+
+[node name="TESTTTTTT" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 22514.0
+offset_bottom = 4121.0
+texture = ExtResource("1_pu4e7")
+expand_mode = 1
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(1017.37, 2923.92)
+scale = Vector2(1.21, 1.21)
+script = ExtResource("3_pbli2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-2.2959, -24.1511)
+scale = Vector2(1.1, 1.1)
+shape = SubResource("CapsuleShape2D_k8se6")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(10.4362, -16.4668)
+scale = Vector2(0.909091, 0.909091)
+texture = ExtResource("1_6e48h")
+
+[node name="Floor-1" type="StaticBody2D" parent="."]
+position = Vector2(815, 3411)
+scale = Vector2(1.1, 1.1)
+physics_material_override = SubResource("PhysicsMaterial_leqo5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor-1"]
+position = Vector2(347.273, 110.909)
+scale = Vector2(3.83905, 2.82546)
+texture = ExtResource("4_hos7n")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor-1"]
+position = Vector2(-449.091, -38.1819)
+scale = Vector2(1.1, 1.1)
+polygon = PackedVector2Array(-6.61151, 112.397, 87.6034, 20.6611, 203.306, -38.843, 364.463, -84.2976, 483.471, -101.653, 613.223, -136.364, 721.488, -143.802, 847.934, -119.008, 952.893, -80.9917, 1106.61, -59.5042, 1285.12, 6.61157, 1425.62, 45.4546, 1565.29, 129.752, 1600.83, 217.355, 1547.93, 328.926, 1366.12, 416.529, 1196, 404, 1037.19, 395.868, 812.397, 413.223, 679.339, 416.529, 497.521, 409.917, 353.719, 409.917, 234.711, 413.223, 113, 395, 1, 370, -82, 336, -136.364, 266.116, -108.264, 157.851)
+
+[node name="Floor-2" type="StaticBody2D" parent="."]
+position = Vector2(783, 2722)
+scale = Vector2(1.1, 1.1)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor-2"]
+position = Vector2(2071.82, 49.0908)
+scale = Vector2(0.477111, 1)
+polygon = PackedVector2Array(13, 8, 60, -23, 118, -36, 233, -57, 400, -74, 588, -79, 753, -85, 926, -77, 1119.05, -80, 1289, -66, 1470, -23, 1613, 43, 1679, 125, 1695, 259, 1613, 325, 1449, 376, 1196, 404, 921, 395, 790, 387, 643, 379, 369.708, 328, 181.132, 269, 94.2881, 156, -27, 47)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1826, 2894)
+scale = Vector2(1.1, 1.1)
+zoom = Vector2(0.35, 0.35)
