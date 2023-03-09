@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://71q8l8l8mplx"]
+[gd_scene load_steps=12 format=3 uid="uid://71q8l8l8mplx"]
 
 [ext_resource type="Texture2D" uid="uid://dey75530s1p0x" path="res://Sprites/beta-astronaut.png" id="1_6e48h"]
 [ext_resource type="Texture2D" uid="uid://b4drmxdeqgvvr" path="res://Other Images/Background/SolarSystemBackground.jpg" id="1_pu4e7"]
@@ -7,14 +7,21 @@
 [ext_resource type="Texture2D" uid="uid://cpm2b3gtuo26i" path="res://Sprites/beta-star.png" id="5_oijc0"]
 [ext_resource type="Texture2D" uid="uid://c04n5iy2ilxcy" path="res://Sprites/RoundAsteroid1.png" id="6_enc23"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k8se6"]
-radius = 109.247
-height = 428.705
-
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_leqo5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nrm4o"]
 radius = 370.319
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fs4l0"]
+radius = 47.7389
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jdrnx"]
+radius = 73.0
+height = 274.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k8se6"]
+radius = 109.247
+height = 428.705
 
 [node name="TESTTTTTT" type="Node2D"]
 
@@ -23,21 +30,6 @@ offset_right = 22514.0
 offset_bottom = 4121.0
 texture = ExtResource("1_pu4e7")
 expand_mode = 1
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(1017.37, 2923.92)
-scale = Vector2(1.21, 1.21)
-script = ExtResource("3_pbli2")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(-2.2959, -24.1511)
-scale = Vector2(1.1, 1.1)
-shape = SubResource("CapsuleShape2D_k8se6")
-
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(10.4362, -16.4668)
-scale = Vector2(0.909091, 0.909091)
-texture = ExtResource("1_6e48h")
 
 [node name="Floor-1" type="StaticBody2D" parent="."]
 position = Vector2(4926, 2418)
@@ -100,3 +92,39 @@ texture = ExtResource("6_enc23")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1.49902, -38.3807)
 shape = SubResource("CircleShape2D_nrm4o")
+
+[node name="GravityOrbit" type="Area2D" parent="."]
+position = Vector2(1492, 2280)
+scale = Vector2(5.96, 5.62316)
+gravity_space_override = 1
+gravity_point = true
+gravity = 2228.3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GravityOrbit"]
+position = Vector2(-1.34225, 0.711334)
+scale = Vector2(3.02383, 3.12269)
+shape = SubResource("CircleShape2D_fs4l0")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(1055, 1724)
+can_sleep = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-0.999878, -17.9999)
+scale = Vector2(1.7593, 1.6159)
+shape = SubResource("CapsuleShape2D_jdrnx")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="RigidBody2D"]
+position = Vector2(9, 13)
+scale = Vector2(1.21, 1.21)
+script = ExtResource("3_pbli2")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D/CharacterBody2D"]
+position = Vector2(10.4362, -16.4668)
+scale = Vector2(0.909091, 0.909091)
+texture = ExtResource("1_6e48h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/CharacterBody2D"]
+position = Vector2(-2.29578, -24.1511)
+scale = Vector2(1.1, 1.1)
+shape = SubResource("CapsuleShape2D_k8se6")
