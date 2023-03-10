@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://71q8l8l8mplx"]
+[gd_scene load_steps=14 format=3 uid="uid://71q8l8l8mplx"]
 
 [ext_resource type="Texture2D" uid="uid://dey75530s1p0x" path="res://Sprites/beta-astronaut.png" id="1_6e48h"]
 [ext_resource type="Texture2D" uid="uid://b4drmxdeqgvvr" path="res://Other Images/Background/SolarSystemBackground.jpg" id="1_pu4e7"]
@@ -8,6 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://b8wd4ehu80xe0" path="res://Sprites/beta-start-platform.png" id="5_ev363"]
 [ext_resource type="Texture2D" uid="uid://cpm2b3gtuo26i" path="res://Sprites/beta-star.png" id="5_oijc0"]
 [ext_resource type="Texture2D" uid="uid://c04n5iy2ilxcy" path="res://Sprites/RoundAsteroid1.png" id="6_enc23"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jdrnx"]
+radius = 19.8942
+height = 137.385
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k8se6"]
+radius = 109.247
+height = 416.563
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_leqo5"]
 
@@ -27,16 +35,49 @@ height = 428.705
 
 [node name="TESTTTTTT" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1826, 2894)
-scale = Vector2(1.1, 1.1)
-zoom = Vector2(0.35, 0.35)
-
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 22514.0
 offset_bottom = 4121.0
 texture = ExtResource("1_pu4e7")
 expand_mode = 1
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(1095, 3055)
+can_sleep = false
+lock_rotation = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-0.999878, -18)
+scale = Vector2(1.7593, 1.6159)
+shape = SubResource("CapsuleShape2D_jdrnx")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="RigidBody2D"]
+position = Vector2(9, 13)
+scale = Vector2(1.21, 1.21)
+slide_on_ceiling = false
+script = ExtResource("3_pbli2")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D/CharacterBody2D"]
+position = Vector2(10.4362, -16.4668)
+scale = Vector2(0.909091, 0.909091)
+texture = ExtResource("1_6e48h")
+
+[node name="Camera2D" type="Camera2D" parent="RigidBody2D/CharacterBody2D"]
+position = Vector2(1054.55, -160.331)
+scale = Vector2(0.909091, 0.909091)
+zoom = Vector2(0.35, 0.35)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/CharacterBody2D"]
+position = Vector2(-2.29578, -24.1511)
+scale = Vector2(1.1, 1.1)
+shape = SubResource("CapsuleShape2D_k8se6")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="RigidBody2D/CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/CharacterBody2D/RigidBody2D"]
+position = Vector2(-4.82114, -50.7175)
+scale = Vector2(1.21, 1.21)
+shape = SubResource("CapsuleShape2D_k8se6")
 
 [node name="Floor-1" type="StaticBody2D" parent="."]
 position = Vector2(5207, 2372)
@@ -58,13 +99,14 @@ position = Vector2(845, 2824)
 scale = Vector2(1.1, 1.1)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor-2"]
-position = Vector2(2184.55, -138.182)
+position = Vector2(3013.64, 88.1821)
+rotation = 2.99149
 scale = Vector2(0.477111, 1)
 polygon = PackedVector2Array(192.447, 50, 215.312, 30, 295.339, 5.45459, 463.015, -7.27271, 653.555, -23.6362, 846.001, -30, 1036.54, -32.7273, 1225.18, -31.8181, 1301.39, -23.6362, 1385.23, 3.63647, 1470.98, 43.6365, 1497.65, 106.364, 1482.41, 223.636, 1390.95, 286.364, 1070.84, 325.455, 960.326, 321.818, 865.056, 336.364, 783.123, 321.818, 703.096, 311.818, 598.298, 267.273, 466.826, 235.455, 329.636, 207.273, 245.798, 178.182, 163.866, 139.091, 160.055, 87.2727)
 
 [node name="Sprite2D" type="Sprite2D" parent="Floor-2"]
 position = Vector2(2589.09, 7.27258)
-rotation = -0.23911
+rotation = 2.75238
 scale = Vector2(1.30078, 1.24751)
 texture = ExtResource("5_c6512")
 
@@ -101,7 +143,7 @@ scale = Vector2(0.486328, 0.353516)
 texture = ExtResource("5_oijc0")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(7524, 2018)
+position = Vector2(7699, 2045)
 scale = Vector2(1.33398, 1.30273)
 
 [node name="RoundAsteroid1" type="Sprite2D" parent="StaticBody2D"]
@@ -111,15 +153,16 @@ texture = ExtResource("6_enc23")
 position = Vector2(1.49902, -38.3807)
 shape = SubResource("CircleShape2D_nrm4o")
 
-[node name="GravityOrbit" type="Area2D" parent="."]
-position = Vector2(1492, 2280)
-scale = Vector2(5.96, 5.62316)
+[node name="GravityOrbit" type="Area2D" parent="StaticBody2D"]
+position = Vector2(-4521.81, 201.116)
+scale = Vector2(4.46783, 4.31644)
+
 gravity_space_override = 1
 gravity_point = true
 gravity = 2228.3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GravityOrbit"]
-position = Vector2(-1.34225, 0.711334)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/GravityOrbit"]
+position = Vector2(1014.43, -51.9281)
 scale = Vector2(3.02383, 3.12269)
 shape = SubResource("CircleShape2D_fs4l0")
 
