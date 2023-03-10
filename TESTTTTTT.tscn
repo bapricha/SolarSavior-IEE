@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://c04n5iy2ilxcy" path="res://Sprites/RoundAsteroid1.png" id="6_enc23"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jdrnx"]
-radius = 55.1355
-height = 277.245
+radius = 19.8942
+height = 137.385
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k8se6"]
 radius = 109.247
@@ -34,7 +34,7 @@ texture = ExtResource("1_pu4e7")
 expand_mode = 1
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(541, 3075)
+position = Vector2(1095, 3055)
 can_sleep = false
 lock_rotation = true
 
