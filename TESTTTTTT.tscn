@@ -9,13 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://cpm2b3gtuo26i" path="res://Sprites/beta-star.png" id="5_oijc0"]
 [ext_resource type="Texture2D" uid="uid://c04n5iy2ilxcy" path="res://Sprites/RoundAsteroid1.png" id="6_enc23"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jdrnx"]
-radius = 19.8942
-height = 137.385
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3fuuf"]
+size = Vector2(150, 300)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k8se6"]
 radius = 109.247
-height = 416.563
+height = 428.705
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_leqo5"]
 
@@ -25,14 +24,6 @@ radius = 370.319
 [sub_resource type="CircleShape2D" id="CircleShape2D_fs4l0"]
 radius = 47.7389
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jdrnx"]
-radius = 73.0
-height = 274.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k8se6"]
-radius = 109.247
-height = 428.705
-
 [node name="TESTTTTTT" type="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -41,43 +32,36 @@ offset_bottom = 4121.0
 texture = ExtResource("1_pu4e7")
 expand_mode = 1
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(1095, 3055)
+[node name="RigidBody2DPlayer" type="RigidBody2D" parent="."]
+position = Vector2(1011, 3113)
 can_sleep = false
 lock_rotation = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(-0.999878, -18)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2DPlayer"]
+position = Vector2(6, 32)
 scale = Vector2(1.7593, 1.6159)
-shape = SubResource("CapsuleShape2D_jdrnx")
+shape = SubResource("RectangleShape2D_3fuuf")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="RigidBody2D"]
-position = Vector2(9, 13)
+[node name="CharacterBody2D" type="CharacterBody2D" parent="RigidBody2DPlayer"]
+position = Vector2(15, 41)
 scale = Vector2(1.21, 1.21)
 slide_on_ceiling = false
 script = ExtResource("3_pbli2")
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D/CharacterBody2D"]
-position = Vector2(10.4362, -16.4668)
-scale = Vector2(0.909091, 0.909091)
-texture = ExtResource("1_6e48h")
-
-[node name="Camera2D" type="Camera2D" parent="RigidBody2D/CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="RigidBody2DPlayer/CharacterBody2D"]
 position = Vector2(1054.55, -160.331)
 scale = Vector2(0.909091, 0.909091)
 zoom = Vector2(0.35, 0.35)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/CharacterBody2D"]
-position = Vector2(-2.29578, -24.1511)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2DPlayer/CharacterBody2D"]
+position = Vector2(-8.2644, -41.3225)
 scale = Vector2(1.1, 1.1)
 shape = SubResource("CapsuleShape2D_k8se6")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="RigidBody2D/CharacterBody2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/CharacterBody2D/RigidBody2D"]
-position = Vector2(-4.82114, -50.7175)
-scale = Vector2(1.21, 1.21)
-shape = SubResource("CapsuleShape2D_k8se6")
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2DPlayer/CharacterBody2D"]
+position = Vector2(10.4362, -16.4668)
+scale = Vector2(0.909091, 0.909091)
+texture = ExtResource("1_6e48h")
 
 [node name="Floor-1" type="StaticBody2D" parent="."]
 position = Vector2(5207, 2372)
@@ -156,7 +140,6 @@ shape = SubResource("CircleShape2D_nrm4o")
 [node name="GravityOrbit" type="Area2D" parent="StaticBody2D"]
 position = Vector2(-4521.81, 201.116)
 scale = Vector2(4.46783, 4.31644)
-
 gravity_space_override = 1
 gravity_point = true
 gravity = 2228.3
@@ -165,27 +148,3 @@ gravity = 2228.3
 position = Vector2(1014.43, -51.9281)
 scale = Vector2(3.02383, 3.12269)
 shape = SubResource("CircleShape2D_fs4l0")
-
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(1055, 1724)
-can_sleep = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(-0.999878, -17.9999)
-scale = Vector2(1.7593, 1.6159)
-shape = SubResource("CapsuleShape2D_jdrnx")
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="RigidBody2D"]
-position = Vector2(9, 13)
-scale = Vector2(1.21, 1.21)
-script = ExtResource("3_pbli2")
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D/CharacterBody2D"]
-position = Vector2(10.4362, -16.4668)
-scale = Vector2(0.909091, 0.909091)
-texture = ExtResource("1_6e48h")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/CharacterBody2D"]
-position = Vector2(-2.29578, -24.1511)
-scale = Vector2(1.1, 1.1)
-shape = SubResource("CapsuleShape2D_k8se6")
